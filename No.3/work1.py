@@ -14,7 +14,6 @@ while True:
     login_selc = input("\nsign in(登陆)\nsign up(注册)\nexit(退出)\n请输入选项:")
     if login_selc == 'sign up':
         user = input("输入用户名:")
-        #user_ac.append(sign_up(user))
         users[user]=(sign_up(user))
     if login_selc == 'sign in':
         while True:
