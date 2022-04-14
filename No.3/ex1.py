@@ -1,5 +1,6 @@
 import random
-x = random.randint(0,100)
+
+x = random.randint(0, 100)
 while True:
     a = input("输入任意键进入out退出:")
     if a == 'out':
@@ -13,7 +14,7 @@ while True:
             print("猜大了")
         if a == x & a <= 100:
             print("猜对了")
-            x = random.randint(0,100)
+            x = random.randint(0, 100)
             break
         if a > 100:
             print("退出程序")
