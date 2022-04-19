@@ -147,7 +147,7 @@ def pet_manage(article_user, pet_name, *seles):
     if sele == 'play':
         pet_info[1] += 10
         pet_info[0] += 1
-        print("\t\t\t\t\t\t\t\t", end='')
+        print("\n\t\t\t\t\t\t\t\t", end='')
         print("!!!!!心情+20，等级+1!!!!!\n")
         os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
         pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
