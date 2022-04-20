@@ -132,58 +132,83 @@ def pets(article_user):
     level = 1
     pet_name = input("输入宠物名:")
     pet = [level, feeling]
+    pet_plist = ['level:' + str(level), 'feeling:' + ':' + str(feeling)]
     pic_save(pet, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+    pic_save(pet_plist, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
     print("\n\t\t\t\t\t\t\t\t*********宠物生成成功*********\n")
     input()
     return pet
 
 
 def pet_manage(article_user, pet_name, *seles):
-    if pet_name not in os.listdir('/Users/erzbir/test/' + article_user + '/pet/'):
+    if pet_name + '.info' not in os.listdir('/Users/erzbir/test/' + article_user + '/pet/'):
         print("\t\t\t\t\t\t\t!!!!!!没有此宠物!!!!!!")
+        return False
     pet_info = pic_read('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-    sele = input("view, feed, play\n输入:")
-    if sele == 'view' or seles == 'view':
-        print("\t\t\t\t\t\t\t\t", end='')
-        print("宠物信息如下:")
-        print("\t\t\t\t\t\t\t\t", end='')
-        print(pet_info)
-    elif sele == 'feed':
-        foods = input("\t\t\t\t\t\t\t\t选择食物 apple cake tomato:")
-        if foods == 'apple':
-            pet_info[1] += 5
-            pet_info[0] += 0.5
-            print("\t\t\t\t\t\t\t\t!!!!!心情+5，等级+0.5!!!!!\n")
-            os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-            pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-        elif foods == 'cake':
+    pet_plist = pic_read('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+    while True:
+        sele = input("\t\t\t\t\t\t\t\tview, feed, play,exit\n输入:")
+        if sele == 'exit':
+            print("\n\t\t\t\t\t\t\t\t!!!!!!已退出!!!!!!")
+            break
+        elif sele == 'view' or seles == 'view':
+            print("\t\t\t\t\t\t\t\t\t", end='')
+            print("宠物信息如下:")
+            for stata in pet_plist:
+                print("\t\t\t\t\t\t\t\t\t", end='')
+                print(stata)
+        elif sele == 'feed':
+            foods = input("\t\t\t\t\t\t\t\t选择食物 apple cake tomato:")
+            if foods == 'apple':
+                pet_info[1] += 5
+                pet_info[0] += 0.5
+                pet_plist[0] = 'level:' + str(pet_info[0])
+                pet_plist[1] = 'feeling:' + str(pet_info[1])
+                print("\n\t\t\t\t\t\t\t\t!!!!!心情+5，等级+0.5!!!!!\n")
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+                pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                pic_save(pet_plist, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+            elif foods == 'cake':
+                pet_info[1] += 10
+                pet_info[0] += 0.5
+                pet_plist[0] = 'level:' + str(pet_info[0])
+                pet_plist[1] = 'feeling:' + str(pet_info[1])
+                print("\n\t\t\t\t\t\t\t\t!!!!!心情+10，等级+0.5!!!!!\n")
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+                pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                pic_save(pet_plist, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+            elif foods == 'tomato':
+                pet_info[1] += 0
+                pet_info[0] += 0.5
+                pet_plist[0] = 'level:' + str(pet_info[0])
+                pet_plist[1] = 'feeling:' + str(pet_info[1])
+                print("\n\t\t\t\t\t\t\t\t\t!!!!!心情+0，等级+0.5!!!!!\n")
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+                pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+                pic_save(pet_plist, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
+            else:
+                print("\t\t\t\t\t\t\t!!!!!!请重新输入!!!!!!")
+        elif sele == 'play':
             pet_info[1] += 10
-            pet_info[0] += 0.5
-            print("\t\t\t\t\t\t\t\t!!!!!心情+10，等级+0.5!!!!!\n")
+            pet_info[0] += 1
+            pet_plist[0] = 'level:' + str(pet_info[0])
+            pet_plist[1] = 'feeling:' + str(pet_info[1])
+            print("\n\t\t\t\t\t\t\t\t!!!!!心情+20，等级+1!!!!!\n")
             os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+            os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
             pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-        elif foods == 'tomato':
-            pet_info[1] += 0
-            pet_info[0] += 0.5
-            print("\t\t\t\t\t\t\t\t\t!!!!!心情+0，等级+0.5!!!!!\n")
-            os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-            pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
+            pic_save(pet_plist, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
         else:
             print("\t\t\t\t\t\t\t!!!!!!请重新输入!!!!!!")
-    elif sele == 'play':
-        pet_info[1] += 10
-        pet_info[0] += 1
-        print("\n\t\t\t\t\t\t\t\t", end='')
-        print("!!!!!心情+20，等级+1!!!!!\n")
-        os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-        pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
-    else:
-        print("\t\t\t\t\t\t\t!!!!!!请重新输入!!!!!!")
+    return True
 
 
 while True:
-    print("\t\t\t\t\t\t\t\t", end='')
-    print("sign in(登陆)\n\t\t\t\t\t\t\t\tsign up(注册)\n\t\t\t\t\t\t\t\texit(退出)")
+    print("\t\t\t\t\t\t\t\t\t", end='')
+    print("sign in(登陆)\n\t\t\t\t\t\t\t\t\tsign up(注册)\n\t\t\t\t\t\t\t\t\texit(退出)")
     login_selc = input('请输入选项:')
     if login_selc == 'exit':
         break
@@ -195,9 +220,9 @@ while True:
         input()
         if user:
             while True:
-                print("\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~:\n\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\tcat "
-                      "state\n\t\t\t\t\t\t\t\tedit\n\t\t\t\t\t\t\t\tview "
-                      "txt\n\t\t\t\t\t\t\t\tself\n\t\t\t\t\t\t\t\tpet\n\t\t\t\t\t\t\t\texit\n")
+                print("\t\t\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~:\n\t\t\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\t\t\tcat "
+                      "state\n\t\t\t\t\t\t\t\t\t\tedit\n\t\t\t\t\t\t\t\t\t\tview "
+                      "txt\n\t\t\t\t\t\t\t\t\t\tself\n\t\t\t\t\t\t\t\t\t\tpet\n\t\t\t\t\t\t\t\t\t\texit\n")
                 selec = input("输入选项:")
                 if selec == 'exit':
                     break
@@ -220,6 +245,7 @@ while True:
                 elif selec == 'pet':
                     pet_ownname = input('输入宠物名称:')
                     pet_manage(user, pet_ownname)
+                    a = input()
                 elif selec == 'self':
                     info = pic_read("/Users/erzbir/test/" + user + '/' + user + ".info")
                     s = input("是否查看宠物(yes,no):")
