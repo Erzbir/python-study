@@ -125,6 +125,7 @@ def article_read(article_user, article_name):
     print("\n\t\t\t\t\t\t\t\t*********内容获取成功*********\n")
     return True
 
+
 # 创建宠物
 def pets(article_user):
     os.mkdir('/Users/erzbir/test/' + article_user + '/pet/')
@@ -138,6 +139,7 @@ def pets(article_user):
     print("\n\t\t\t\t\t\t\t\t*********宠物生成成功*********\n")
     input()
     return pet
+
 
 # 宠物管理系统
 def pet_manage(article_user, pet_name, *seles):
@@ -220,9 +222,10 @@ while True:
         input()
         if user:
             while True:
-                print("\t\t\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~:\n\t\t\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\t\t\tcat "
-                      "state\n\t\t\t\t\t\t\t\t\t\tedit\n\t\t\t\t\t\t\t\t\t\tview "
-                      "txt\n\t\t\t\t\t\t\t\t\t\tself\n\t\t\t\t\t\t\t\t\t\tpet\n\t\t\t\t\t\t\t\t\t\texit\n")
+                print(
+                    "\t\t\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~:\n\t\t\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\t\t\tcat "
+                    "state\n\t\t\t\t\t\t\t\t\t\tedit\n\t\t\t\t\t\t\t\t\t\tview "
+                    "txt\n\t\t\t\t\t\t\t\t\t\tself\n\t\t\t\t\t\t\t\t\t\tpet\n\t\t\t\t\t\t\t\t\t\texit\n")
                 selec = input("输入选项:")
                 if selec == 'exit':
                     break
