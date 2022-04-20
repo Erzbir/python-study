@@ -125,7 +125,7 @@ def article_read(article_user, article_name):
     print("\n\t\t\t\t\t\t\t\t*********内容获取成功*********\n")
     return True
 
-
+# 创建宠物
 def pets(article_user):
     os.mkdir('/Users/erzbir/test/' + article_user + '/pet/')
     feeling = 50
@@ -139,7 +139,7 @@ def pets(article_user):
     input()
     return pet
 
-
+# 宠物管理系统
 def pet_manage(article_user, pet_name, *seles):
     if pet_name + '.info' not in os.listdir('/Users/erzbir/test/' + article_user + '/pet/'):
         print("\t\t\t\t\t\t\t!!!!!!没有此宠物!!!!!!")
