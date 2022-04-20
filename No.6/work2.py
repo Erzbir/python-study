@@ -5,7 +5,7 @@ import os.path
 import pickle
 import uuid
 
-salt_1 = "$%&^*$(#*%#*@(943234243kjcasn"
+salt_1 = "$%&^*$(#*%#*@(943234243kjcasn"    # 盐值
 
 
 # 加密
