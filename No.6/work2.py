@@ -222,7 +222,7 @@ while True:
         if user:
             while True:
                 print(
-                    "\t\t\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~:\n\t\t\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\t\t\t"
+                    "\t\t\t\t\t\t\t~~~~~~~~~~~~~选项~~~~~~~~~~~~~~\n\t\t\t\t\t\t\t\t\t\tcreate\n\t\t\t\t\t\t\t\t\t\t"
                     "info\n\t\t\t\t\t\t\t\t\t\tedit\n\t\t\t\t\t\t\t\t\t\tview "
                     "txt\n\t\t\t\t\t\t\t\t\t\tuser info\n\t\t\t\t\t\t\t\t\t\tpet\n\t\t\t\t\t\t\t\t\t\texit\n")
                 selec = input("输入选项:")
