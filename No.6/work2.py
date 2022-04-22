@@ -81,21 +81,27 @@ def article_create(user_accout, article_name):
     article_own = ['文章名:' + article_name, '文章创建者:' + article_user, '创建日期:' + create_time]
     if not os.path.exists('/Users/erzbir/test/' + article_user + '/articles/'):
         os.mkdir('/Users/erzbir/test/' + article_user + '/articles/')
+    if not os.path.exists('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/'):
+        os.mkdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/')
+    if not os.path.exists('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/'):
+        os.mkdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/')
+    if not os.path.exists('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/'):
+        os.mkdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/')
     else:
         print("\t\t\t\t\t\t\t\t!!!!!!文章已存在!!!!!!")
         return False
-    pic_save(article_own, '/Users/erzbir/test/' + article_user + '/' + 'articles' + '/' + article_name + '.info')
-    pic_save(article_name, '/Users/erzbir/test/' + article_user + '/' + 'articles' + '/' + article_name + '.txt')
+    pic_save(article_own, '/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/' + article_name + '.info')
+    pic_save(article_name, '/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/' + article_name + '.txt')
     print("\n\t\t\t\t\t\t\t\t*********创建成功*********\n")
     return article_name
 
 
 # 读取文章信息
 def article_info_read(article_user, article_name):
-    if article_name + '.info' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/'):
-        print("\t\t\t\t\t\t\t!!!!!!读取失败!!!!!!")
+    if article_name + '.info' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/'):
+        print("\t\t\t\t\t\t\t!!!!!!文章信息不存在!!!!!!")
         return False
-    file = pic_read('/Users/erzbir/test/' + article_user + '/' + 'articles' + '/' + article_name + '.info')
+    file = pic_read('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/' + article_name + '.info')
     print(f"\t\t\t\t{file}")
     print("\n\t\t\t\t\t\t\t\t*********信息读取成功*********\n")
     return True
@@ -103,10 +109,10 @@ def article_info_read(article_user, article_name):
 
 # 写入文章内容
 def article_write(article_user, article_name):
-    if article_name + '.txt' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/'):
+    if article_name + '.txt' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/'):
         print("\t\t\t\t\t\t\t\t\t!!!!!!文章不存在!!!!!!")
         return False
-    file = open('/Users/erzbir/test/' + article_user + '/' + 'articles' + '/' + article_name + '.txt', "wb")
+    file = open('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/' + article_name + '.txt', "wb")
     while True:
         txt = input()
         if txt == '\\0':
@@ -120,10 +126,10 @@ def article_write(article_user, article_name):
 
 # 读取文章内容
 def article_read(article_user, article_name):
-    if article_name + '.txt' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/'):
+    if article_name + '.txt' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/'):
         print("\t\t\t\t\t\t\t\t\t!!!!!!文章不存在!!!!!!")
         return False
-    file = open('/Users/erzbir/test/' + article_user + '/' + 'articles' + '/' + article_name + '.txt', 'rb')
+    file = open('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/article/' + article_name + '.txt', 'rb')
     print(file.read().decode('utf-8'))
     file.close()
     print("\n\t\t\t\t\t\t\t\t*********内容获取成功*********\n")
@@ -237,11 +243,19 @@ while True:
                     article_info_read(user, name)
                     input()
                 elif selec == 'edit':
+                    file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
+                    for txt_1 in file_1:
+                        txtName = (txt_1.split('.'))
+                        print(txtName[0], end='')
                     name = input('输入文章名:')
                     article_write(user, name)
                     input()
                 elif selec == 'view txt':
-                    name = input('输入文章名:')
+                    file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
+                    for txt_1 in file_1:
+                        txtName = (txt_1.split('.'))
+                        print(txtName[0], end='')
+                    name = input('\n输入文章名:')
                     article_read(user, name)
                     input()
                 elif selec == 'pet':
