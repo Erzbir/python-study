@@ -246,15 +246,15 @@ while True:
                     file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
                     for txt_1 in file_1:
                         txtName = (txt_1.split('.'))
-                        print(txtName[0], end='')
-                    name = input('输入文章名:')
+                        print(txtName[0], end='  ')
+                    name = input('\n输入文章名:')
                     article_write(user, name)
                     input()
                 elif selec == 'view txt':
                     file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
                     for txt_1 in file_1:
                         txtName = (txt_1.split('.'))
-                        print(txtName[0], end='')
+                        print(txtName[0], end='  ')
                     name = input('\n输入文章名:')
                     article_read(user, name)
                     input()
