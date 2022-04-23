@@ -213,6 +213,13 @@ def pet_manage(article_user, pet_name, sele):
     return True
 
 
+def article_all():
+    file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
+    for txt_1 in file_1:
+        txtName = (txt_1.split('.'))
+        print(txtName[0], end='  ')
+
+
 while True:
     print("\t\t\t\t\t\t\t\t\t\t", end='')
     print("sign in(登陆)\n\t\t\t\t\t\t\t\t\t\tsign up(注册)\n\t\t\t\t\t\t\t\t\t\texit(退出)")
@@ -239,22 +246,18 @@ while True:
                     article_create(user, name)
                     input()
                 elif selec == 'info':
+                    article_all()
                     name = input('输入文章名:')
                     article_info_read(user, name)
                     input()
                 elif selec == 'edit':
-                    file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
-                    for txt_1 in file_1:
-                        txtName = (txt_1.split('.'))
-                        print(txtName[0], end='  ')
+                    article_all()
                     name = input('\n输入文章名:')
+                    print("\t\t\t\t\t\t\t\t\t!!!!!!开始写入了,输入\\0结束!!!!!!")
                     article_write(user, name)
                     input()
                 elif selec == 'view txt':
-                    file_1 = os.listdir('/Users/erzbir/test/' + user + '/articles/')
-                    for txt_1 in file_1:
-                        txtName = (txt_1.split('.'))
-                        print(txtName[0], end='  ')
+                    article_all()
                     name = input('\n输入文章名:')
                     article_read(user, name)
                     input()
