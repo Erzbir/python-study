@@ -43,7 +43,7 @@ def sign_up(user_accout):
     if passwd_sure == user_passwd:
         print("\n\t\t\t\t\t\t\t\t*********注册成功*********\n")
         input()
-        uid = '编号:' + datetime.datetime.strftime(datetime.datetime.now(), '%Y, %m, %d') + uuid.uuid4().hex
+        uid = datetime.datetime.strftime(datetime.datetime.now(), '%Y, %m, %d') + uuid.uuid4().hex
         users_ins_login = [user_accout, user_passwd_hash]
         users_ins = ['用户名:' + user_accout, '密码:' + user_passwd_hash, '编号:' + uid]
         os.mkdir("/Users/erzbir/test/" + user_accout)
@@ -203,7 +203,7 @@ def pet_manage(article_user, pet_name, sele):
         pet_info[0] += 1
         pet_plist[0] = 'level:' + str(pet_info[0])
         pet_plist[1] = 'feeling:' + str(pet_info[1])
-        print("\n\t\t\t\t\t\t\t\t!!!!!心情+20，等级+1!!!!!\n")
+        print("\n\t\t\t\t\t\t\t\t!!!!!心情+10，等级+1!!!!!\n")
         os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
         os.remove('/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.plist')
         pic_save(pet_info, '/Users/erzbir/test/' + article_user + '/pet/' + pet_name + '.info')
