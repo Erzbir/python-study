@@ -271,6 +271,7 @@ while True:
                             break
                 elif selec == 'user info':
                     info = pic_read("/Users/erzbir/test/" + user + '/' + user + ".info")
+                    input()
                     s = input("是否查看宠物(yes,no):")
                     if s == 'yes':
                         pet_ownname = input('输入宠物名称:')
