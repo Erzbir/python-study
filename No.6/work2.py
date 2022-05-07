@@ -98,6 +98,8 @@ def article_create(user_accout, article_name):
 
 # 读取文章信息
 def article_info_read(article_user, article_name):
+    if not os.path.exists('/Users/erzbir/test/' + article_user + '/articles/'):
+        return False
     if article_name + '.info' not in os.listdir('/Users/erzbir/test/' + article_user + '/articles/' + article_name + '/info/'):
         print("\t\t\t\t\t\t\t!!!!!!文章信息不存在!!!!!!")
         return False
